@@ -8,16 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class EcommerceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(EcommerceApplication.class, args);
-	}
-
-	@RestController
-	public static class FirstController {
-		@GetMapping("/")
-		public String helloWorld(){
-			return "Hello, World!";
-		}
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(EcommerceApplication.class, args);
+    }
 }
