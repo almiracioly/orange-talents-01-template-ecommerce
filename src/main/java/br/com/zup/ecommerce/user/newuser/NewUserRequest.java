@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 public class NewUserRequest {
     @NotBlank
     @Email
-    @UniqueValue(domainClass = User.class, fieldName = "email")
+    @UniqueValue(domainClass = User.class, fieldName = "email", message = "Informe um email válido")
     private String email;
 
     @NotBlank
