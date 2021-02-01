@@ -1,5 +1,6 @@
 package br.com.zup.ecommerce.user.newuser;
 
+import br.com.zup.ecommerce.shared.annotation.uniquevalue.UniqueValue;
 import br.com.zup.ecommerce.user.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -10,6 +11,7 @@ import javax.validation.constraints.Size;
 public class NewUserRequest {
     @NotBlank
     @Email
+    @UniqueValue(domainClass = User.class, fieldName = "email")
     private String email;
 
     @NotBlank
