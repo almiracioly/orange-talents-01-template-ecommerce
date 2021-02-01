@@ -1,4 +1,4 @@
-package br.com.zup.ecommerce.shared.controlleradvice;
+package br.com.zup.ecommerce.shared.controlleradvice.requestvalidation;
 
 public class RequestFieldErrorOutput {
     private String field;

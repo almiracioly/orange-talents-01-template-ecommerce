@@ -1,4 +1,4 @@
-package br.com.zup.ecommerce.shared.controlleradvice;
+package br.com.zup.ecommerce.shared.controlleradvice.requestvalidation;
 
 import java.util.ArrayList;
 import java.util.List;

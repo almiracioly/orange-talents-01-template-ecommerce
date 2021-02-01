@@ -1,4 +1,4 @@
-package br.com.zup.ecommerce.shared.controlleradvice;
+package br.com.zup.ecommerce.shared.controlleradvice.requestvalidation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
