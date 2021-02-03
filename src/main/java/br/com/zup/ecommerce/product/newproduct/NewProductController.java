@@ -25,7 +25,7 @@ public class NewProductController {
     @Transactional
     public ResponseEntity<?> exec(@RequestBody @Valid NewProductRequest request, Authentication authentication) {
         UserDetailsImpl loggedUser = (UserDetailsImpl) authentication.getPrincipal();
-        Product product = request.toProduct(loggedUser.getUser());
+        Product product = request.toProduct(entityManager, loggedUser.getUser());
         entityManager.persist(product);
 
         List<ProductCharacteristic> characteristics = request.toProductCharacteristicList(product);

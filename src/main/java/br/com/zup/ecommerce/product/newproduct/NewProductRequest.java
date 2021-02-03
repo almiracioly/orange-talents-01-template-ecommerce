@@ -6,6 +6,7 @@ import br.com.zup.ecommerce.product.ProductCharacteristic;
 import br.com.zup.ecommerce.shared.annotation.existsindatabase.ExistsInDatabase;
 import br.com.zup.ecommerce.user.User;
 
+import javax.persistence.EntityManager;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
@@ -58,8 +59,9 @@ public class NewProductRequest {
         return categoryId;
     }
 
-    public Product toProduct(User user) {
-        return new Product(name, price, availableQuantity, description, user);
+    public Product toProduct(EntityManager entityManager, User user) {
+        Category category = entityManager.find(Category.class, categoryId);
+        return new Product(name, price, availableQuantity, description, category, user);
     }
 
     public List<ProductCharacteristic> toProductCharacteristicList(Product product) {

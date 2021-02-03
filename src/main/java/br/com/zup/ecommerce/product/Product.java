@@ -1,5 +1,6 @@
 package br.com.zup.ecommerce.product;
 
+import br.com.zup.ecommerce.category.Category;
 import br.com.zup.ecommerce.user.User;
 
 import javax.persistence.*;
@@ -26,13 +27,18 @@ public class Product {
     private Long availableQuantity;
 
     @Size(max = 1000)
+    @Column(nullable = false)
     private String description;
 
     @Column(nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Deprecated
@@ -40,11 +46,12 @@ public class Product {
 
     }
 
-    public Product(String name, BigDecimal price, Long availableQuantity, String description, User user) {
+    public Product(String name, BigDecimal price, Long availableQuantity, String description,Category category, User user) {
         this.name = name;
         this.price = price;
         this.availableQuantity = availableQuantity;
         this.description = description;
+        this.category = category;
         this.user = user;
     }
 }
