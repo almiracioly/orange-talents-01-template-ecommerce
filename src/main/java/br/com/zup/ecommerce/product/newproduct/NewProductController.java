@@ -5,6 +5,8 @@ import br.com.zup.ecommerce.product.Product;
 import br.com.zup.ecommerce.product.ProductCharacteristic;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +22,11 @@ public class NewProductController {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @InitBinder
+    public void init(WebDataBinder binder) {
+        binder.addValidators(new UndiplicatedProductCharacteristicsValidator());
+    }
 
     @PostMapping("/products")
     @Transactional

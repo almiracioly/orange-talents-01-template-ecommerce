@@ -10,7 +10,9 @@ import javax.persistence.EntityManager;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class NewProductRequest {
@@ -70,5 +72,15 @@ public class NewProductRequest {
         }).collect(Collectors.toList());
 
         return productCharacteristics;
+    }
+
+    public Set<String> getDuplicatedProductCharacteristics() {
+        Set<String> uniqueCharacteristics = new HashSet<>();
+        Set<String> duplicates = new HashSet<>();
+        for (ProductCharacteristicRequest characteristic : characteristics) {
+            if(!uniqueCharacteristics.add(characteristic.getName())) duplicates.add(characteristic.getName());
+        }
+
+        return duplicates;
     }
 }
