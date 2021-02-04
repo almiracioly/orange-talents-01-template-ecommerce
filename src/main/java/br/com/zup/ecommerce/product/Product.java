@@ -69,4 +69,8 @@ public class Product {
 
         images.addAll(productImages);
     }
+
+    public boolean belongsToUser(User user) {
+        return this.user.equals(user);
+    }
 }
