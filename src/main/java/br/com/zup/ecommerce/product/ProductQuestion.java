@@ -8,7 +8,9 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "product_questions")
 public class ProductQuestion {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false)
     private String title;
@@ -23,14 +25,33 @@ public class ProductQuestion {
     @OneToOne
     private User author;
 
-    public ProductQuestion(String title, Product product,  User questionAuthor) {
+    public ProductQuestion() {
+        
+    }
+
+    public ProductQuestion(String title, Product product, User questionAuthor) {
         this.title = title;
         this.product = product;
         author = questionAuthor;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getTitle() {
         return title;
     }
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
 }

@@ -5,7 +5,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "product_characteristics")
 public class ProductCharacteristic {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -13,7 +15,7 @@ public class ProductCharacteristic {
     @Column(nullable = false)
     private String description;
 
-    @ManyToOne(fetch = FetchType.EAGER,optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
@@ -26,5 +28,17 @@ public class ProductCharacteristic {
         this.name = name;
         this.description = description;
         this.product = product;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

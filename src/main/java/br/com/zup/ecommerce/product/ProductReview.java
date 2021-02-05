@@ -38,4 +38,24 @@ public class ProductReview {
         this.reviewedProduct = reviewedProduct;
         author = reviewAuthor;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public Integer getRate() {
+        return rate;
+    }
 }
