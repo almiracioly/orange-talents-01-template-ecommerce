@@ -73,4 +73,8 @@ public class Product {
     public boolean belongsToUser(User user) {
         return this.user.equals(user);
     }
+
+    public User getOwner() {
+        return user;
+    }
 }
